@@ -1,7 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -108,25 +111,20 @@
                                     <li>
                                         <div class="message-center">
                                             <!-- Message -->
-                                            <a href="transport">
+			
+                                             
+			                               <c:forEach var="newOrder" items="${newOrderList}" varStatus="loop">
+			                               
+                                            <a href="transport?id=${newOrder.id}">
                                                 <div class="btn btn-danger btn-circle m-r-10"><i class="fa fa-link"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Mango</h5> <span class="mail-desc">Address1</span> <span class="time">9:30 AM</span>
+                                                    <h5>${newOrder.flavour}</h5> <span class="mail-desc">${newOrder.id}</span> <span class="time">${newOrder.date}</span>
                                                 </div>
                                             </a>
-                                            <!-- Message -->
-                                            <a href="transport">
-                                                <div class="btn btn-success btn-circle m-r-10"><i class="ti-calendar"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>Chocolate</h5> <span class="mail-desc">Address2</span> <span class="time">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                            <a href="transport">
-                                                <div class="btn btn-primary btn-circle m-r-10"><i class="ti-user"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>Vanilla</h5> <span class="mail-desc">Address2</span> <span class="time">9:02 AM</span>
-                                                </div>
-                                            </a>
+                                            
+                                           </c:forEach>
+                                            
+                                            
                                         </div>
                                     </li>
                                     <li>
@@ -137,7 +135,9 @@
                         </li>
                         <!-- End Comment -->
                         <!-- Messages -->
-                        <li class="nav-item dropdown">
+                        
+                        
+                       <!--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-envelope"></i>
 								<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
 							</a>
@@ -148,28 +148,28 @@
                                     </li>
                                     <li>
                                         <div class="message-center">
-                                            <!-- Message -->
+                                            Message
                                             <a href="#">
                                                 <div class="user-img"> <img src="resources/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
                                                 </div>
                                             </a>
-                                            <!-- Message -->
+                                            Message
                                             <a href="#">
                                                 <div class="user-img"> <img src="resources/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
                                                 </div>
                                             </a>
-                                            <!-- Message -->
+                                            Message
                                             <a href="#">
                                                 <div class="user-img"> <img src="resources/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
                                                 </div>
                                             </a>
-                                            <!-- Message -->
+                                            Message
                                             <a href="#">
                                                 <div class="user-img"> <img src="resources/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                                 <div class="mail-contnet">
@@ -183,7 +183,9 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
+                        
+                        
                         <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
@@ -329,10 +331,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>OrderId</th>
                                                 <th>Name</th>
                                                 <th>Product</th>
                                                 <th>quantity</th>
@@ -341,50 +345,25 @@
                                         </thead>
                                         <tbody>
 
+                                          <c:forEach var="order" items="${orderList}" varStatus="loop">
+			                               
                                             <tr>
                                                 <td>
                                                     <div class="round-img">
                                                         <a href=""><img src="resources/images/avatar/4.jpg" alt=""></a>
                                                     </div>
                                                 </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iBook</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
+                                                <td>${order.id}</td>
+                                                <td><span>${order.username}</span></td>
+                                                <td><span>${order.flavour}</span></td>
+                                                <td><span>${order.units}</span></td>
+                                                <td><span class="badge badge-success">${order.status}</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="resources/images/avatar/2.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iPhone</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="resources/images/avatar/3.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iMac</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="resources/images/avatar/4.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iBook</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
+                                       
+                                            
+                                           </c:forEach>
+
+                                            
                                         </tbody>
                                     </table>
                                 </div>
