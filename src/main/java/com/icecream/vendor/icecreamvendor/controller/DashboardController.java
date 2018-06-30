@@ -35,6 +35,11 @@ public class DashboardController {
 		return "login";
 	}
 	
+	@RequestMapping("/userProfile")
+	public String showUserProfile() {
+		return "userProfile";
+	}
+	
 	@RequestMapping("/admin")
 	public String showAdmin(ModelMap modelMap) {
 		 
@@ -42,10 +47,27 @@ public class DashboardController {
 		modelMap.addAttribute("newOrderList",newOrderList);
 		
 		List<OrderIce> orderList = iceRepository.findAll();
+		for(OrderIce orderIce : orderList)
+		{
+			if(orderIce.getStatus().equals("D"))
+			{
+				orderIce.setStatus("Delivered");
+			}
+			else
+			{
+		        orderIce.setStatus("In Production");
+			}
+		}
 		modelMap.addAttribute("orderList",orderList);
 		
 		return "admin";
 	}
+	
+	@RequestMapping("/adminProfile")
+	public String showAdminProfile() {
+		return "adminProfile";
+	}
+	
 	
 	@RequestMapping("/transport")
 	public String showTransport(@RequestParam("id") int id , ModelMap modelMap) {
@@ -71,13 +93,29 @@ public class DashboardController {
 		return "icecreamOrder";
 	}
 	
+	@RequestMapping(value="/trackOrder")
+	public String trackIcecreamOrder(@RequestParam("id") int id, ModelMap modelMap) {
+		OrderIce trackice = iceRepository.findById(id).get();
+		
+		if(trackice.getStatus().equals("D"))
+		{
+			trackice.setStatus("Delivered");
+		}
+		else
+		{
+			trackice.setStatus("In Production");
+		}
+		modelMap.addAttribute("trackice",trackice);
+		return "userProfile";
+	}
+	
 	@RequestMapping(value="/makeorder",method = RequestMethod.POST)
 	public String makeIceOrder(OrderIce orderIce,ModelMap modelMap) {
 		orderIce.setDate(Date.valueOf(java.time.LocalDate.now()));
-		orderIce.setStatus('C');
+		orderIce.setStatus("C");
 		
 		OrderIce ordered = iceRepository.save(orderIce);
-		sendOrderPlacedMail();
+		sendOrderPlacedMail(ordered);
 		modelMap.addAttribute("ordered",ordered);
 		return "loginOrderDashboard";
 	}
@@ -85,7 +123,7 @@ public class DashboardController {
 	@RequestMapping(value ="/sendDeliverNotification",method = RequestMethod.POST)
 	public String sendDeliveredMail(@RequestParam("id") int id , @RequestParam("temp") double temp)
 	{
-		iceRepository.updateOrderIce(id,'D');
+		iceRepository.updateOrderIce(id,"D");
 		Notifier nfr = new Notifier();
 		nfr.setEmailId("mohanubdt@gmail.com");
 		notificationService.sendDeliveredNotification(nfr,temp);
@@ -93,10 +131,10 @@ public class DashboardController {
 	}
 	
 	@RequestMapping(value ="/sendOrderNotification",method = RequestMethod.POST)
-	public void sendOrderPlacedMail()
+	public void sendOrderPlacedMail(OrderIce ordered)
 	{
 		Notifier nfr = new Notifier();
 		nfr.setEmailId("mohanubdt@gmail.com");
-		notificationService.sendOrderNotification(nfr);
+		notificationService.sendOrderNotification(nfr,ordered);
 	}
 }

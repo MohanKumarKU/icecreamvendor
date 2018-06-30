@@ -31,6 +31,10 @@
 <!--===============================================================================================-->
 
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script
 	src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCSTYwleJCBene1dtmAQDocjcbbD0AU9KE"
 	type="text/javascript"></script>
@@ -86,11 +90,75 @@ body {
 <body class="fix-header">
 	<div class="background"></div>
 
-	<div align="center">
+<!-- 	<div align="center">
 		<h3>Transport Section :</h3>
 		<img src="resources/img/VectorVehicle.jpg" alt=""
 			style="position: relative; height: 100px;">
-	</div>
+	</div> -->
+	<br/>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="resources/img/chok.png" alt="Los Angeles" style="width:27%;">
+        <div class="carousel-caption">
+          <h3 style="color:red;">Transport Section</h3>
+          <h2>Chocolate Ice</h2>
+          <p>Choco is always so much fun!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="resources/img/mango.jpg" alt="Chicago" style="width:27%;">
+        <div class="carousel-caption">
+        <h3 style="color:red;">Transport Section</h3>
+          <h2>Mango</h2>
+          <p>Thank you, Mango!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="resources/img/van.jpg" alt="New York" style="width:24%;">
+        <div class="carousel-caption">
+        <h3 style="color:red;">Transport Section</h3>
+          <h2>Green Apple</h2>
+          <p>We love Nature!</p>
+        </div>
+      </div>
+  
+  
+      <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
 
 	<br />
 	<div class="row">
@@ -136,11 +204,11 @@ body {
 	 <div class="col-lg-6" style="position: center;">
    &nbsp;&nbsp;&nbsp;&nbsp; <b>Enter delivery address and start</b>
     <input id="address" type="text" placeholder="Enter address here" />
-    <button id="btn">Get LatLong</button>
+    <button id="btn">Point Location</button>
     </div>
     </div>
 
-
+<br/><br/>
 	<div class="row">
 
 		<div class="col-lg-6" style="position: center;">

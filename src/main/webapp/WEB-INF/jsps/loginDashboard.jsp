@@ -72,7 +72,7 @@
                     <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Learn More</a>
                   </div>
                   <div class="col-xs-6 text-left wow fadeInUp" data-wow-delay="1.4s">
-                    <a href="orderice?username=${userLogin.username}" class="btn btn-primary">Order Your Ice</a>
+                    <a href="orderice?username=${userLogin.username}" class="btn btn-secondary btn-lg">Order Your Ice</a>
                   </div>
                 </div><!--End Button Row-->  
               </div>
@@ -251,7 +251,7 @@
           
           <div class="col-sm-4 text-right">
             <p><small>Copyright &copy; 2014. All rights reserved. <br>
-	            Created by <a href="http://visualsoldiers.com">Visual Soldiers</a></small></p>
+	           </small></p>
           </div>
         </div>
         

@@ -18,7 +18,7 @@ public class OrderIce {
 	private String flavour;
 	private int units;
 	private String address;
-	private char status;
+	private String status;
 	private Date date;
 	
 	
@@ -52,10 +52,10 @@ public class OrderIce {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Date getDate() {

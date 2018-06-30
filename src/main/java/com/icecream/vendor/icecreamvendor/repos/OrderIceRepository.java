@@ -14,9 +14,9 @@ public interface OrderIceRepository extends JpaRepository<OrderIce, Integer>{
 	@Transactional
 	@Modifying
 	@Query("UPDATE OrderIce c SET c.status = :status WHERE c.id = :id")
-    void updateOrderIce(@Param("id") int id, @Param("status") char status);
+    void updateOrderIce(@Param("id") int id, @Param("status") String status);
 	
-	@Query(value = "SELECT * FROM orderice t WHERE t.status != 'D'",
+	@Query(value = "SELECT * FROM orderice t WHERE t.status != \"D\" ",
             nativeQuery=true
     )
     List<OrderIce> selectOrderIce();

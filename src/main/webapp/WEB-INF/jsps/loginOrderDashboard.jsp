@@ -41,7 +41,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="logout" class="scroll">Log Out</a></li>
-            <li><a href="#">Welcome ${userLogin.username}</a></li>
+            <li><a href="#">Welcome ${ordered.username}</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -54,7 +54,7 @@
             <a href="index.html"><img src="resources/img/logo.svg" alt="Logo"></a>
           </div>
           <div class="col-xs-6 signin text-right navbar-nav">
-            <a href="logout" class="scroll">Log Out</a>&nbsp; &nbsp; &nbsp;<a href="#">Welcome ${userLogin.username}</a>
+            <a href="logout" class="scroll">Log Out</a>&nbsp; &nbsp; &nbsp;<a href="#">Welcome ${ordered.username}</a>
           </div>
         </div>
         
@@ -73,6 +73,9 @@
                   </div>
                   <div class="col-xs-6 text-left wow fadeInUp" data-wow-delay="1.4s">
                     <a href="orderice?username=${ordered.username}" class="btn btn-primary">Order More!</a>
+                  </div>
+                  <div class="col-xs-6 text-left wow fadeInUp" data-wow-delay="1.4s">
+                    <a href="trackOrder?id=${ordered.id}" class="btn btn-primary">Track Your Order!</a>
                   </div>
                 </div><!--End Button Row-->  
               </div>
@@ -250,8 +253,8 @@
           </div>
           
           <div class="col-sm-4 text-right">
-            <p><small>Copyright &copy; 2014. All rights reserved. <br>
-	            Created by <a href="http://visualsoldiers.com">Visual Soldiers</a></small></p>
+            <p><small>Copyright &copy; 2018. All rights reserved. <br>
+	            </small></p>
           </div>
         </div>
         

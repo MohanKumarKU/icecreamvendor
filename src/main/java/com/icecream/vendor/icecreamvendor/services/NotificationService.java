@@ -6,6 +6,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.icecream.vendor.icecreamvendor.entities.Notifier;
+import com.icecream.vendor.icecreamvendor.entities.OrderIce;
 
 @Service
 public class NotificationService {
@@ -28,13 +29,14 @@ public class NotificationService {
 		javaMailSender.send(simpleMailMessage);
 	}
 
-	public void sendOrderNotification(Notifier notifier) {
+	public void sendOrderNotification(Notifier notifier, OrderIce ordered) {
 
 		SimpleMailMessage simpleMailMessage = prepareMailMessage(notifier);
 
 		simpleMailMessage.setSubject("Icecream Order Placed !!!");
 
-		simpleMailMessage.setText("Ice cream order placed.");
+		simpleMailMessage.setText("Ice cream order placed. "
+				                   +" IceCream Type : "+ordered.getFlavour()+ ". Quantity : "+ordered.getUnits()+ ". Address : "+ordered.getAddress());
 
 		javaMailSender.send(simpleMailMessage);
 	}
