@@ -21,11 +21,20 @@ public class NotificationService {
 	public void sendDeliveredNotification(Notifier notifier, double temp) {
 		
 		SimpleMailMessage simpleMailMessage = prepareMailMessage(notifier);
-
-		simpleMailMessage.setSubject("Icecream Delivery Notification !!!");
+		
+		if(temp <= 10.0)
+		{
+		simpleMailMessage.setSubject("Icecream Delivery Success Notification !!!");
 
 		simpleMailMessage.setText("Ice cream has been delivered! Successfully. And maintained temperature at delivery time is " +temp+ " degree" );
 
+		}
+		else
+		{
+			simpleMailMessage.setSubject("Icecream Delivery Rejected Notification !!!");
+
+			simpleMailMessage.setText("Ice cream delivery has been Rejected/Failed! since maintained temperature at delivery time is " +temp+ " degree" );
+		}
 		javaMailSender.send(simpleMailMessage);
 	}
 
